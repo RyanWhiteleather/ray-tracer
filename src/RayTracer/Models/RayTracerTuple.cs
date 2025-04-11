@@ -11,6 +11,8 @@ public class RayTracerTuple
     public const double POINT_W = 1.0;
     public const double VECTOR_W = 0.0;
 
+    public const double EPSILON = 0.00001;
+
     public double X {get; set;}
     public double Y {get; set;}
     public double Z {get; set;}
@@ -33,6 +35,36 @@ public class RayTracerTuple
     /// <param name="z"></param>
     /// <returns></returns>
     public static RayTracerTuple Vector(double x, double y, double z) => new(x, y, z, VECTOR_W);
+
+    /// <summary>
+    /// Checks the equality of two RayTracerTuples
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns></returns>
+    public bool Equals(RayTracerTuple? other)
+    {
+        if (other is null){
+            return false;
+        } 
+
+        return Math.Abs(X - other.X) < EPSILON &&
+               Math.Abs(Y - other.Y) < EPSILON &&
+               Math.Abs(Z - other.Z) < EPSILON &&
+               Math.Abs(W - other.W) < EPSILON;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        return obj is RayTracerTuple other && Equals(other);
+    }
+        
+    public override int GetHashCode() {
+        return HashCode.Combine(Math.Round(X / EPSILON),
+                         Math.Round(Y / EPSILON),
+                         Math.Round(Z / EPSILON),
+                         Math.Round(W / EPSILON));
+    }
+
 
     /// <summary>
     /// Helper method to create a new Tuple

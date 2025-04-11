@@ -38,4 +38,22 @@ public class RayTracerTupleTests
         var vector = RayTracerTuple.Vector(0, 0, 0);
         Assert.NotEqual(RayTracerTuple.POINT_W, vector.W);
     }
+
+    [Fact]
+    public void IsEqual_ReturnsTrue_WhenRayTracerTuplesAreEqual()
+    {
+        var point1 = RayTracerTuple.Point(4.3, -4.2, 3.1); 
+        var point2 = RayTracerTuple.Point(4.3, -4.2, 3.1); 
+
+        Assert.True(point1.Equals(point2));
+    }
+
+    [Fact]
+    public void IsEqual_ReturnsFalse_WhenRayTracerTuplesAreNotEqual()
+    {
+        var point1 = RayTracerTuple.Point(4.3, -4.2, 3.1); 
+        var point2 = RayTracerTuple.Vector(4.3, -4.2, 3.1); 
+
+        Assert.False(point1.Equals(point2));
+    }
 }
