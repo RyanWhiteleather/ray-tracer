@@ -60,4 +60,26 @@ public class PointTests
         
         Assert.Equal(result, expected);
     }
+
+    [Fact]
+    public void SubtractOperator_ReturnsNewVector_WhenSubtractingTwoPoints(){
+        var point1 = new Point(3, 2, 1);
+        var point2 = new Point(5, 6, 7);
+
+        var result = point1 - point2;
+        var expected = new Vector(-2, -4, -6);
+
+        Assert.Equal(result, expected);
+    }
+
+    [Fact]
+    public void SubtractOperator_ReturnsNewPoint_WhenSubtractingVectorFromPoint(){
+        var point1 = new Point(3, 2, 1);
+        var vector1 = new Vector(5, 6, 7);
+
+        var result = point1 - vector1;
+        var expected = new Point(-2, -4, -6);
+
+        Assert.Equal(result, expected);
+    }
 }

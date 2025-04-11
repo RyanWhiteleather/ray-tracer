@@ -51,7 +51,7 @@ public class VectorTests
     }
 
     [Fact]
-    public void Add_ReturnsNewVector_WhenAddingVectorAndVector()
+    public void AddOperator_ReturnsNewVector_WhenAddingVectorAndVector()
     {
         var vector1 = new Vector(3, -2, 5); 
         var vector2 = new Vector(-2, 3, 1); 
@@ -63,13 +63,25 @@ public class VectorTests
     }
 
     [Fact]
-    public void Add_ReturnsNewPoint_WhenAddingVectorAndPoint()
+    public void AddOperator_ReturnsNewPoint_WhenAddingVectorAndPoint()
     {
         var vector1 = new Vector(3, -2, 5); 
         var point1 = new Point(-2, 3, 1); 
 
         var result = vector1 + point1;
         var expected = new Point(1, 1, 6);
+        
+        Assert.Equal(result, expected);
+    }
+
+    [Fact]
+    public void SubtractOperator_ReturnsNewVector_WhenSubtractingTwoVectors()
+    {
+        var vector1 = new Vector(3, 2, 1); 
+        var vector2 = new Vector(5, 6, 7); 
+
+        var result = vector1 - vector2;
+        var expected = new Vector(-2, -4, -6);
         
         Assert.Equal(result, expected);
     }

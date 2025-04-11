@@ -1,5 +1,9 @@
 namespace RayTracer.Models;
 
+/// <summary>
+/// Represents a direction and magnitude in 3D space.
+/// Vectors are immutable and support arithmetic operations.
+/// </summary>
 public readonly struct Vector : IEquatable<Vector>
 {
     public double X {get;}
@@ -7,22 +11,23 @@ public readonly struct Vector : IEquatable<Vector>
     public double Z {get;}
 
     public Vector(double x, double y, double z) => (X, Y, Z) = (x, y, z);
-    public override bool Equals(object? obj)
-    {
-        return obj is Vector other && Equals(other);
-    }
-        
+
+    /// <summary>
+    /// Returns a hash code for this vector, rounded to match fuzzy equality rules.
+    /// </summary>   
     public override int GetHashCode() {
-        return HashCode.Combine(Math.Round(X / MathConstants.Epsilon),
-                         Math.Round(Y / MathConstants.Epsilon),
-                         Math.Round(Z / MathConstants.Epsilon));
+        return HashCode.Combine(
+            Math.Round(X, 5),
+            Math.Round(Y, 5),
+            Math.Round(Z, 5)
+        );
     }
 
     /// <summary>
-    /// Checks the equaility of two Points
+    /// Determines whether this vector is equal to another vector within a small margin of error.
     /// </summary>
-    /// <param name="other"></param>
-    /// <returns></returns>
+    /// <param name="other">The vector to compare.</param>
+    /// <returns><c>true</c> if the vectors are equal; otherwise, <c>false</c>.</returns>
     public bool Equals(Vector other) 
     {
         return Math.Abs(X - other.X) < MathConstants.Epsilon &&
@@ -30,13 +35,42 @@ public readonly struct Vector : IEquatable<Vector>
                Math.Abs(Z - other.Z) < MathConstants.Epsilon;
     }
 
+    /// <inheritdoc/>
+    public override bool Equals(object? obj)
+    {
+        return obj is Vector other && Equals(other);
+    }
+
     public static bool operator ==(Vector a, Vector b) => a.Equals(b);
     public static bool operator !=(Vector a, Vector b) => !a.Equals(b);
 
-    public static Vector operator +(Vector p, Vector v)
+    /// <summary>
+    /// Adds two vectors together component-wise.
+    /// </summary>
+    /// <param name="v1">The first vector.</param>
+    /// <param name="v2">The second vector.</param>
+    /// <returns>A new <see cref="Vector"/> representing the sum.</returns>
+    public static Vector operator +(Vector v1, Vector v2)
     {
-        return new(p.X + v.X, p.Y + v.Y, p.Z + v.Z);
+        return new(v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
     }
 
+    /// <summary>
+    /// Adds a vector to a point, returning a new translated point.
+    /// </summary>
+    /// <param name="v">The vector to add.</param>
+    /// <param name="p">The point to translate.</param>
+    /// <returns>A new <see cref="Point"/> after applying the vector offset.</returns>
     public static Point operator +(Vector v, Point p) => p + v;
+
+    /// <summary>
+    /// Subtracts one vector from another, resulting in a vector representing the directional difference.
+    /// </summary>
+    /// <param name="v1">The vector to subtract from.</param>
+    /// <param name="v2">The vector to subtract.</param>
+    /// <returns>A new <see cref="Vector"/> representing the difference.</returns>
+    public static Vector operator -(Vector v1, Vector v2)
+    {
+        return new Vector(v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
+    }
 }
