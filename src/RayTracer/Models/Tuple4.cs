@@ -11,13 +11,22 @@ public class Tuple4
 {
     public const double POINT_W = 1.0;
     public const double VECTOR_W = 0.0;
-
     public const double EPSILON = 0.00001;
 
     public double X {get; set;}
     public double Y {get; set;}
     public double Z {get; set;}
     public double W {get; set;}
+
+    /// <summary>
+    /// Returns if the Tuple4 is a point.
+    /// </summary>
+    public bool IsPoint => W == POINT_W;
+
+    /// <summary>
+    /// Returns if the Tuple4 is a vector
+    /// </summary>
+    public bool IsVector => W == VECTOR_W;
 
     /// <summary>
     /// Helper method to create a new Point Tuple
@@ -62,6 +71,10 @@ public class Tuple4
     /// <returns></returns>
     public Tuple4 Add(Tuple4 other)
     {
+        if(IsPoint && other.IsPoint)
+        {
+            throw new InvalidOperationException("You cannot add a point to a point.");
+        }
         //TODO I don't think adding of the w's is correct
         return new Tuple4(X + other.X, Y + other.Y, Z + other.Z, W + other.W);
     }
@@ -79,7 +92,8 @@ public class Tuple4
     }
 
     /// <summary>
-    /// Create a new Tuple4
+    /// Private method to create a new Tuple4.
+    /// For public access use either <see cref="Point"/> or <see cref="Vector"/> 
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>

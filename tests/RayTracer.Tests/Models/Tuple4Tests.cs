@@ -1,3 +1,4 @@
+using Microsoft.VisualStudio.TestPlatform.Common.Utilities;
 using RayTracer.Models;
 namespace RayTracer.Tests.Models;
 
@@ -57,14 +58,39 @@ public class Tuple4Tests
     }
 
     [Fact]
-    public void Add_ReturnsNewTuple4()
+    public void Add_ReturnsNewPoint_WhenAddingPointAndVector()
     {
         var point1 = Tuple4.Point(3, -2, 5); 
         var vector1 = Tuple4.Vector(-2, 3, 1); 
 
+        var result = point1.Add(vector1);
         var expected =Tuple4.Point(1, 1, 6);
+        
 
-        Assert.Equal(point1.Add(vector1), expected);
+        Assert.Equal(result, expected);
+        Assert.True(result.IsPoint);
+    }
 
+    [Fact]
+    public void Add_ReturnsNewVector_WhenAddingVectorAndVector()
+    {
+        var vector1 = Tuple4.Vector(3, -2, 5); 
+        var vector2 = Tuple4.Vector(-2, 3, 1); 
+
+        var result = vector1.Add(vector2);
+        var expected =Tuple4.Vector(1, 1, 6);
+        
+
+        Assert.Equal(result, expected);
+        Assert.True(result.IsVector);
+    }
+
+    [Fact]
+    public void Add_ThrowsInvalidOperation_WhenAddingPointAndPoint()
+    {
+        var point1 = Tuple4.Point(3, -2, 5); 
+        var point2 = Tuple4.Point(-2, 3, 1); 
+
+        Assert.Throws<InvalidOperationException>(() => point1.Add(point2));
     }
 }
