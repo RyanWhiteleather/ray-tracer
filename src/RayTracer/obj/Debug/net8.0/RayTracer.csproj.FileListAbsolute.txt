@@ -1,0 +1,14 @@
+/home/ryan/projects/ray-tracer/src/RayTracer/bin/Debug/net8.0/RayTracer
+/home/ryan/projects/ray-tracer/src/RayTracer/bin/Debug/net8.0/RayTracer.deps.json
+/home/ryan/projects/ray-tracer/src/RayTracer/bin/Debug/net8.0/RayTracer.runtimeconfig.json
+/home/ryan/projects/ray-tracer/src/RayTracer/bin/Debug/net8.0/RayTracer.dll
+/home/ryan/projects/ray-tracer/src/RayTracer/bin/Debug/net8.0/RayTracer.pdb
+/home/ryan/projects/ray-tracer/src/RayTracer/obj/Debug/net8.0/RayTracer.GeneratedMSBuildEditorConfig.editorconfig
+/home/ryan/projects/ray-tracer/src/RayTracer/obj/Debug/net8.0/RayTracer.AssemblyInfoInputs.cache
+/home/ryan/projects/ray-tracer/src/RayTracer/obj/Debug/net8.0/RayTracer.AssemblyInfo.cs
+/home/ryan/projects/ray-tracer/src/RayTracer/obj/Debug/net8.0/RayTracer.csproj.CoreCompileInputs.cache
+/home/ryan/projects/ray-tracer/src/RayTracer/obj/Debug/net8.0/RayTracer.dll
+/home/ryan/projects/ray-tracer/src/RayTracer/obj/Debug/net8.0/refint/RayTracer.dll
+/home/ryan/projects/ray-tracer/src/RayTracer/obj/Debug/net8.0/RayTracer.pdb
+/home/ryan/projects/ray-tracer/src/RayTracer/obj/Debug/net8.0/RayTracer.genruntimeconfig.cache
+/home/ryan/projects/ray-tracer/src/RayTracer/obj/Debug/net8.0/ref/RayTracer.dll
