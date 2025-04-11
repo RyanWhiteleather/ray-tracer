@@ -19,7 +19,17 @@ public class RayTracerTuple
     public double W {get; set;}
 
     /// <summary>
-    /// Creates a new Point Tuple
+    /// Create a new RayTracerTuple
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <param name="z"></param>
+    /// <param name="w"></param>
+    /// <returns></returns>
+    public RayTracerTuple(double x, double y, double z, double w) => (X,Y,Z,W) = (x, y, z, w);
+
+    /// <summary>
+    /// Helper method to create a new Point Tuple
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
@@ -28,7 +38,7 @@ public class RayTracerTuple
     public static RayTracerTuple Point(double x, double y, double z) => new(x, y, z, POINT_W);
 
     /// <summary>
-    /// Creates a new Vector Tuple
+    /// Helper method to create a new Vector Tuple
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
@@ -43,7 +53,8 @@ public class RayTracerTuple
     /// <returns></returns>
     public bool Equals(RayTracerTuple? other)
     {
-        if (other is null){
+        if (other is null)
+        {
             return false;
         } 
 
@@ -51,6 +62,17 @@ public class RayTracerTuple
                Math.Abs(Y - other.Y) < EPSILON &&
                Math.Abs(Z - other.Z) < EPSILON &&
                Math.Abs(W - other.W) < EPSILON;
+    }
+
+    /// <summary>
+    /// Add two RayTracerTuples together
+    /// </summary>
+    /// <param name="other"></param>
+    /// <returns></returns>
+    public RayTracerTuple Add(RayTracerTuple other)
+    {
+        //TODO I don't think adding of the w's is correct
+        return new RayTracerTuple(X + other.X, Y + other.Y, Z + other.Z, W + other.W);
     }
 
     public override bool Equals(object? obj)
@@ -64,17 +86,4 @@ public class RayTracerTuple
                          Math.Round(Z / EPSILON),
                          Math.Round(W / EPSILON));
     }
-
-
-    /// <summary>
-    /// Helper method to create a new Tuple
-    /// </summary>
-    /// <param name="x"></param>
-    /// <param name="y"></param>
-    /// <param name="z"></param>
-    /// <param name="w"></param>
-    /// <returns></returns>
-    private RayTracerTuple(double x, double y, double z, double w) => (X,Y,Z,W) = (x, y, z, w);
-
-    
 }

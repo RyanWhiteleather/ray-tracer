@@ -52,8 +52,20 @@ public class RayTracerTupleTests
     public void IsEqual_ReturnsFalse_WhenRayTracerTuplesAreNotEqual()
     {
         var point1 = RayTracerTuple.Point(4.3, -4.2, 3.1); 
-        var point2 = RayTracerTuple.Vector(4.3, -4.2, 3.1); 
+        var vector1 = RayTracerTuple.Vector(4.3, -4.2, 3.1); 
 
-        Assert.False(point1.Equals(point2));
+        Assert.False(point1.Equals(vector1));
+    }
+
+    [Fact]
+    public void Add_ReturnsNewTuple()
+    {
+        var point1 = RayTracerTuple.Point(3, -2, 5); 
+        var vector1 = RayTracerTuple.Vector(-2, 3, 1); 
+
+        var expected = new RayTracerTuple(1, 1, 6, 1);
+
+        Assert.Equal(point1.Add(vector1), expected);
+
     }
 }
