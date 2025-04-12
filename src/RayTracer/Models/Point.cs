@@ -41,7 +41,7 @@ public readonly struct Point : IEquatable<Point>
                Math.Abs(Y - other.Y) < MathConstants.Epsilon &&
                Math.Abs(Z - other.Z) < MathConstants.Epsilon;
     }
-    
+
     public static bool operator ==(Point a, Point b) => a.Equals(b);
     public static bool operator !=(Point a, Point b) => !a.Equals(b);
 
@@ -77,5 +77,7 @@ public readonly struct Point : IEquatable<Point>
     {
         return new Point(p.X - v.X, p.Y - v.Y, p.Z - v.Z);
     }
+
+    
 
 }

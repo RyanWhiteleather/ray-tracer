@@ -58,7 +58,7 @@ public class PointTests
         var result = point1 + vector1;
         var expected = new Point(1, 1, 6);
         
-        Assert.Equal(result, expected);
+        Assert.Equal(expected, result);
     }
 
     [Fact]
@@ -69,7 +69,7 @@ public class PointTests
         var result = point1 - point2;
         var expected = new Vector(-2, -4, -6);
 
-        Assert.Equal(result, expected);
+        Assert.Equal(expected, result);
     }
 
     [Fact]
@@ -80,6 +80,6 @@ public class PointTests
         var result = point1 - vector1;
         var expected = new Point(-2, -4, -6);
 
-        Assert.Equal(result, expected);
+        Assert.Equal(expected, result);
     }
 }

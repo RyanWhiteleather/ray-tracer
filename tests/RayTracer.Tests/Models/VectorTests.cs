@@ -59,7 +59,7 @@ public class VectorTests
         var result = vector1 + vector2;
         var expected = new Vector(1, 1, 6);
         
-        Assert.Equal(result, expected);
+        Assert.Equal(expected, result);
     }
 
     [Fact]
@@ -71,7 +71,7 @@ public class VectorTests
         var result = vector1 + point1;
         var expected = new Point(1, 1, 6);
         
-        Assert.Equal(result, expected);
+        Assert.Equal(expected, result);
     }
 
     [Fact]
@@ -83,6 +83,17 @@ public class VectorTests
         var result = vector1 - vector2;
         var expected = new Vector(-2, -4, -6);
         
-        Assert.Equal(result, expected);
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void NegateOperator_ReturnsOppositeVector()
+    {
+        var vector1 = new Vector(1, -2, 3);
+
+        var result = -vector1;
+        var expected = new Vector(-1, 2, -3);
+
+        Assert.Equal(expected, result);
     }
 }
