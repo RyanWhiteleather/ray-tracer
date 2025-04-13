@@ -113,12 +113,4 @@ public readonly struct Vector : IEquatable<Vector>
     {
         return new Vector(v.X / scale, v.Y / scale, v.Z / scale);
     }
-
-    /// <summary>
-    /// Division operator provided for symmetry
-    /// </summary>
-    /// <param name="scale"></param>
-    /// <param name="v"></param>
-    /// <returns></returns>
-    public static Vector operator /(double scale, Vector v) => v / scale;
 }

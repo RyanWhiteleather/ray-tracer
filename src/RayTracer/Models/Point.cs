@@ -107,13 +107,4 @@ public readonly struct Point : IEquatable<Point>
     {
         return new Point(p.X / scale, p.Y / scale, p.Z / scale);
     }
-
-    /// <summary>
-    /// Division operator provided for symmetry
-    /// </summary>
-    /// <param name="scale"></param>
-    /// <param name="p"></param>
-    /// <returns></returns>
-    public static Point operator /(double scale, Point p) => p / scale;
-
 }

@@ -98,7 +98,7 @@ public class VectorTests
     }
 
     [Fact]
-    public void MultiplicationOperator_ReturnsScalarVAlueVector()
+    public void MultiplicationOperator_WorksForVectorTimesScalarAndScalarTimesVector()
     {
         var vector1 = new Vector(1, -2, 3);
         var scale = 3.5;
@@ -107,6 +107,9 @@ public class VectorTests
         var expected = new Vector(3.5, -7, 10.5);
 
         Assert.Equal(expected, result);
+
+        var otherResult = scale * vector1;
+        Assert.Equal(expected, otherResult);
     }
 
     [Fact]

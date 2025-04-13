@@ -84,7 +84,7 @@ public class PointTests
     }
 
     [Fact]
-    public void MultiplicationOperator_ReturnsScalarValuePoint()
+    public void MultiplicationOperator_WorksForPointTimesScalarAndScalarTimesPoint()
     {
         var point1 = new Point(1, -2, 3);
         var scale = 3.5;
@@ -93,6 +93,9 @@ public class PointTests
         var expected = new Point(3.5, -7, 10.5);
 
         Assert.Equal(expected, result);
+
+        var otherResult = scale * point1;
+        Assert.Equal(expected, otherResult);
     }
 
     [Fact]
