@@ -77,10 +77,48 @@ public readonly struct Vector : IEquatable<Vector>
     /// <summary>
     /// Negates the Vector, used to know the opposite of some vector.
     /// </summary>
-    /// <param name="v1"></param>
+    /// <param name="v"></param>
     /// <returns></returns>
-    public static Vector operator -(Vector v1)
+    public static Vector operator -(Vector v)
     {
-        return new Vector(-v1.X, -v1.Y, -v1.Z);
+        return new Vector(-v.X, -v.Y, -v.Z);
     }
+
+    /// <summary>
+    /// Mutiplies the Vector by some scale
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="scale"></param>
+    /// <returns>A scalar vector</returns>
+    public static Vector operator *(Vector v, double scale)
+    {
+        return new Vector(v.X * scale, v.Y * scale, v.Z * scale);
+    }
+
+    /// <summary>
+    /// Multiplication operator provided for symmetry
+    /// </summary>
+    /// <param name="scale"></param>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public static Vector operator *(double scale, Vector v) => v * scale;
+
+    /// <summary>
+    /// Divides the Vector by some scale
+    /// </summary>
+    /// <param name="v"></param>
+    /// <param name="scale"></param>
+    /// <returns>A scalar vector</returns>
+    public static Vector operator /(Vector v, double scale)
+    {
+        return new Vector(v.X / scale, v.Y / scale, v.Z / scale);
+    }
+
+    /// <summary>
+    /// Division operator provided for symmetry
+    /// </summary>
+    /// <param name="scale"></param>
+    /// <param name="v"></param>
+    /// <returns></returns>
+    public static Vector operator /(double scale, Vector v) => v / scale;
 }

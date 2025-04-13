@@ -82,4 +82,28 @@ public class PointTests
 
         Assert.Equal(expected, result);
     }
+
+    [Fact]
+    public void MultiplicationOperator_ReturnsScalarValuePoint()
+    {
+        var point1 = new Point(1, -2, 3);
+        var scale = 3.5;
+
+        var result = point1 * scale;
+        var expected = new Point(3.5, -7, 10.5);
+
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void DivisionOperator_ReturnsScalarValuePoint()
+    {
+        var point1 = new Point(1, -2, 3);
+        var scale = 2;
+
+        var result = point1 / scale;
+        var expected = new Point(0.5, -1, 1.5);
+
+        Assert.Equal(expected, result);
+    }
 }

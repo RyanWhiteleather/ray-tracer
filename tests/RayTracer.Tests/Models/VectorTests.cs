@@ -96,4 +96,28 @@ public class VectorTests
 
         Assert.Equal(expected, result);
     }
+
+    [Fact]
+    public void MultiplicationOperator_ReturnsScalarVAlueVector()
+    {
+        var vector1 = new Vector(1, -2, 3);
+        var scale = 3.5;
+
+        var result = vector1 * scale;
+        var expected = new Vector(3.5, -7, 10.5);
+
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void DivisionOperator_ReturnsScalarVAlueVector()
+    {
+        var vector1 = new Vector(1, -2, 3);
+        var scale = 2;
+
+        var result = vector1 / scale;
+        var expected = new Vector(0.5, -1, 1.5);
+
+        Assert.Equal(expected, result);
+    }
 }

@@ -78,6 +78,42 @@ public readonly struct Point : IEquatable<Point>
         return new Point(p.X - v.X, p.Y - v.Y, p.Z - v.Z);
     }
 
-    
+    /// <summary>
+    /// Mutiplies the Point by some scale
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="scale"></param>
+    /// <returns>A scalar point</returns>
+    public static Point operator *(Point p, double scale)
+    {
+        return new Point(p.X * scale, p.Y * scale, p.Z * scale);
+    }
+
+    /// <summary>
+    /// Multiplication operator provided for symmetry
+    /// </summary>
+    /// <param name="scale"></param>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static Point operator *(double scale, Point p) => p * scale;
+
+    /// <summary>
+    /// Divides the Point by some scale
+    /// </summary>
+    /// <param name="p"></param>
+    /// <param name="scale"></param>
+    /// <returns>A scalar point</returns>
+    public static Point operator /(Point p, double scale)
+    {
+        return new Point(p.X / scale, p.Y / scale, p.Z / scale);
+    }
+
+    /// <summary>
+    /// Division operator provided for symmetry
+    /// </summary>
+    /// <param name="scale"></param>
+    /// <param name="p"></param>
+    /// <returns></returns>
+    public static Point operator /(double scale, Point p) => p / scale;
 
 }
