@@ -6,12 +6,12 @@ namespace RayTracer.Models;
 /// </summary>
 public readonly struct Point : IEquatable<Point>
 {
-    public double X {get;}
-    public double Y {get;}
-    public double Z {get;}
+    public double X { get; }
+    public double Y { get; }
+    public double Z { get; }
 
     public Point(double x, double y, double z) => (X, Y, Z) = (x, y, z);
-        
+
     /// <summary>
     /// Determines whether this instance is equal to another object.
     /// </summary>
@@ -21,13 +21,10 @@ public readonly struct Point : IEquatable<Point>
     {
         return obj is Point other && Equals(other);
     }
-        
-    public override int GetHashCode() {
-        return HashCode.Combine(
-            Math.Round(X, 5),
-            Math.Round(Y, 5),
-            Math.Round(Z, 5)
-        );
+
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Math.Round(X, 5), Math.Round(Y, 5), Math.Round(Z, 5));
     }
 
     /// <summary>
@@ -35,14 +32,15 @@ public readonly struct Point : IEquatable<Point>
     /// </summary>
     /// <param name="other">The other point to compare.</param>
     /// <returns><c>true</c> if the points are equal; otherwise, <c>false</c>.</returns>
-    public bool Equals(Point other) 
+    public bool Equals(Point other)
     {
-        return Math.Abs(X - other.X) < MathConstants.Epsilon &&
-               Math.Abs(Y - other.Y) < MathConstants.Epsilon &&
-               Math.Abs(Z - other.Z) < MathConstants.Epsilon;
+        return Math.Abs(X - other.X) < MathConstants.Epsilon
+            && Math.Abs(Y - other.Y) < MathConstants.Epsilon
+            && Math.Abs(Z - other.Z) < MathConstants.Epsilon;
     }
 
     public static bool operator ==(Point a, Point b) => a.Equals(b);
+
     public static bool operator !=(Point a, Point b) => !a.Equals(b);
 
     /// <summary>
@@ -92,7 +90,7 @@ public readonly struct Point : IEquatable<Point>
     /// <summary>
     /// Multiplication operator provided for symmetry
     /// </summary>
-    /// <param name="scale"></param>
+    /// /// <param name="scale"></param>
     /// <param name="p"></param>
     /// <returns></returns>
     public static Point operator *(double scale, Point p) => p * scale;

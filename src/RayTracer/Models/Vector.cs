@@ -6,21 +6,18 @@ namespace RayTracer.Models;
 /// </summary>
 public readonly struct Vector : IEquatable<Vector>
 {
-    public double X {get;}
-    public double Y {get;}
-    public double Z {get;}
+    public double X { get; }
+    public double Y { get; }
+    public double Z { get; }
 
     public Vector(double x, double y, double z) => (X, Y, Z) = (x, y, z);
 
     /// <summary>
     /// Returns a hash code for this vector, rounded to match fuzzy equality rules.
-    /// </summary>   
-    public override int GetHashCode() {
-        return HashCode.Combine(
-            Math.Round(X, 5),
-            Math.Round(Y, 5),
-            Math.Round(Z, 5)
-        );
+    /// </summary>
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(Math.Round(X, 5), Math.Round(Y, 5), Math.Round(Z, 5));
     }
 
     /// <summary>
@@ -28,11 +25,11 @@ public readonly struct Vector : IEquatable<Vector>
     /// </summary>
     /// <param name="other">The vector to compare.</param>
     /// <returns><c>true</c> if the vectors are equal; otherwise, <c>false</c>.</returns>
-    public bool Equals(Vector other) 
+    public bool Equals(Vector other)
     {
-        return Math.Abs(X - other.X) < MathConstants.Epsilon &&
-               Math.Abs(Y - other.Y) < MathConstants.Epsilon &&
-               Math.Abs(Z - other.Z) < MathConstants.Epsilon;
+        return Math.Abs(X - other.X) < MathConstants.Epsilon
+            && Math.Abs(Y - other.Y) < MathConstants.Epsilon
+            && Math.Abs(Z - other.Z) < MathConstants.Epsilon;
     }
 
     /// <inheritdoc/>
@@ -42,6 +39,7 @@ public readonly struct Vector : IEquatable<Vector>
     }
 
     public static bool operator ==(Vector a, Vector b) => a.Equals(b);
+
     public static bool operator !=(Vector a, Vector b) => !a.Equals(b);
 
     /// <summary>
