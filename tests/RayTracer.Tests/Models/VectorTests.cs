@@ -33,6 +33,30 @@ public class VectorTests
     }
 
     [Fact]
+    public void GetHashCode_ShouldBeEqual()
+    {
+        var vector1 = new Vector(4.3, -4.2, 3.1);
+        var vector2 = new Vector(4.3, -4.2, 3.1);
+
+        var hash1 = vector1.GetHashCode();
+        var hash2 = vector2.GetHashCode();
+
+        Assert.Equal(hash1, hash2);
+    }
+
+    [Fact]
+    public void GetHashCode_ShouldNotBeEqual()
+    {
+        var point1 = new Point(4.3, -4.2, 3.1);
+        var point2 = new Point(10, -4.2, 3.1);
+
+        var hash1 = point1.GetHashCode();
+        var hash2 = point2.GetHashCode();
+
+        Assert.NotEqual(hash1, hash2);
+    }
+
+    [Fact]
     public void EqualOperator_ReturnsTrue_WhenVectorsAreEqual()
     {
         var Vector1 = new Vector(4.3, -4.2, 3.1);

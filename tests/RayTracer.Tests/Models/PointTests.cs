@@ -51,6 +51,30 @@ public class PointTests
     }
 
     [Fact]
+    public void GetHashCode_ShouldBeEqual()
+    {
+        var point1 = new Point(4.3, -4.2, 3.1);
+        var point2 = new Point(4.3, -4.2, 3.1);
+
+        var hash1 = point1.GetHashCode();
+        var hash2 = point2.GetHashCode();
+
+        Assert.Equal(hash1, hash2);
+    }
+
+    [Fact]
+    public void GetHashCode_ShouldNotBeEqual()
+    {
+        var point1 = new Point(4.3, -4.2, 3.1);
+        var point2 = new Point(10, -4.2, 3.1);
+
+        var hash1 = point1.GetHashCode();
+        var hash2 = point2.GetHashCode();
+
+        Assert.NotEqual(hash1, hash2);
+    }
+
+    [Fact]
     public void AddOperator_ReturnsNewPoint_WhenAddingPointAndVector()
     {
         var point1 = new Point(3, -2, 5);
