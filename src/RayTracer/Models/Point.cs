@@ -10,6 +10,8 @@ public readonly struct Point : IEquatable<Point>
     public double Y { get; }
     public double Z { get; }
 
+    private double W { get; } = 1;
+
     public Point(double x, double y, double z) => (X, Y, Z) = (x, y, z);
 
     /// <summary>

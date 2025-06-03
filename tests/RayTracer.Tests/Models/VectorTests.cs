@@ -147,4 +147,17 @@ public class VectorTests
 
         Assert.Equal(expected, result);
     }
+
+    [Theory]
+    [InlineData(1, 0, 0, 1)]
+    [InlineData(0, 1, 0, 1)]
+    [InlineData(0, 0, 1, 1)]
+    [InlineData(1, 2, 3, 3.74165738677)]
+    [InlineData(-1, -2, -3, 3.74165738677)]
+    public void VectorMagnitude_ReturnsExpectedResult(double x, double y, double z, double expected)
+    {
+        var vector = new Vector(x, y, z);
+        var result = vector.Magnitude();
+        Assert.Equal(expected, result, precision: 6);
+    }
 }

@@ -10,6 +10,8 @@ public readonly struct Vector : IEquatable<Vector>
     public double Y { get; }
     public double Z { get; }
 
+    private double W { get; } = 0;
+
     public Vector(double x, double y, double z) => (X, Y, Z) = (x, y, z);
 
     /// <summary>
@@ -36,6 +38,16 @@ public readonly struct Vector : IEquatable<Vector>
     public override bool Equals(object? obj)
     {
         return obj is Vector other && Equals(other);
+    }
+
+    /// <summary>
+    /// Computes the magnitude of the vector. Magnitude is the distance of the vector.
+    /// It is how far you would travel in a straight line if you were to walk from one end of the vector to the other.
+    /// </summary>
+    /// <returns></returns>
+    public double Magnitude()
+    {
+        return Math.Sqrt((X * X) + (Y * Y) + (Z * Z) + (W * W));
     }
 
     public static bool operator ==(Vector a, Vector b) => a.Equals(b);
