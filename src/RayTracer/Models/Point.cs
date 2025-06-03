@@ -34,6 +34,8 @@ public readonly struct Point : IEquatable<Point>
         && Math.Abs(Y - other.Y) < MathConstants.Epsilon
         && Math.Abs(Z - other.Z) < MathConstants.Epsilon;
 
+    #region Operator Overloads
+
     public static bool operator ==(Point a, Point b) => a.Equals(b);
 
     public static bool operator !=(Point a, Point b) => !a.Equals(b);
@@ -88,4 +90,6 @@ public readonly struct Point : IEquatable<Point>
     /// /// <returns>A scalar point</returns>
     public static Point operator /(Point p, double scale) =>
         new(p.X / scale, p.Y / scale, p.Z / scale);
+
+    #endregion
 }

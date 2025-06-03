@@ -63,6 +63,8 @@ public readonly struct Vector : IEquatable<Vector>
     /// <returns>The scalar value</returns>
     public double Dot(Vector v2) => (X * v2.X) + (Y * v2.Y) + (Z * v2.Z) + (W * v2.W);
 
+    #region Operator Overloads
+
     public static bool operator ==(Vector a, Vector b) => a.Equals(b);
 
     public static bool operator !=(Vector a, Vector b) => !a.Equals(b);
@@ -125,4 +127,6 @@ public readonly struct Vector : IEquatable<Vector>
     /// <returns>A scalar vector</returns>
     public static Vector operator /(Vector v, double scale) =>
         new(v.X / scale, v.Y / scale, v.Z / scale);
+
+    #endregion
 }
