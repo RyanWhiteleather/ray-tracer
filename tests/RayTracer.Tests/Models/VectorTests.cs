@@ -160,4 +160,20 @@ public class VectorTests
         var result = vector.Magnitude();
         Assert.Equal(expected, result, precision: 6);
     }
+
+    public static IEnumerable<object[]> NormalizeTestData =>
+        new List<object[]>
+        {
+            new object[] { new Vector(4, 0, 0), new Vector(1, 0, 0) },
+            new object[] { new Vector(1, 2, 3), new Vector(0.26726, 0.53452, 0.80178) },
+        };
+
+    [Theory]
+    [MemberData(nameof(NormalizeTestData))]
+    public void Normalize_ReturnsUnitVector(Vector input, Vector expected)
+    {
+        var result = input.Normalize();
+        Assert.Equal(expected, result);
+        Assert.Equal(1.0, result.Magnitude());
+    }
 }

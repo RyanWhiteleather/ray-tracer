@@ -50,6 +50,16 @@ public readonly struct Vector : IEquatable<Vector>
         return Math.Sqrt((X * X) + (Y * Y) + (Z * Z) + (W * W));
     }
 
+    /// <summary>
+    /// Computes the magnitude of the vector. Magnitude is the distance of the vector.
+    /// It is how far you would travel in a straight line if you were to walk from one end of the vector to the other.
+    /// </summary>
+    /// <returns></returns>
+    public Vector Normalize()
+    {
+        return new Vector(X / Magnitude(), Y / Magnitude(), Z / Magnitude());
+    }
+
     public static bool operator ==(Vector a, Vector b) => a.Equals(b);
 
     public static bool operator !=(Vector a, Vector b) => !a.Equals(b);
