@@ -19,27 +19,20 @@ public readonly struct Point : IEquatable<Point>
     /// </summary>
     /// <param name="obj"></param>
     /// <returns><c>true</c> if the object is a <see cref="Point"/> with equivalent coordinates</returns>
-    public override bool Equals(object? obj)
-    {
-        return obj is Point other && Equals(other);
-    }
+    public override bool Equals(object? obj) => obj is Point other && Equals(other);
 
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(Math.Round(X, 5), Math.Round(Y, 5), Math.Round(Z, 5));
-    }
+    public override int GetHashCode() =>
+        HashCode.Combine(Math.Round(X, 5), Math.Round(Y, 5), Math.Round(Z, 5));
 
     /// <summary>
     /// Determines whether two <see cref="Point"/> instances are equal within a small margin of error.
     /// </summary>
     /// <param name="other">The other point to compare.</param>
     /// <returns><c>true</c> if the points are equal; otherwise, <c>false</c>.</returns>
-    public bool Equals(Point other)
-    {
-        return Math.Abs(X - other.X) < MathConstants.Epsilon
-            && Math.Abs(Y - other.Y) < MathConstants.Epsilon
-            && Math.Abs(Z - other.Z) < MathConstants.Epsilon;
-    }
+    public bool Equals(Point other) =>
+        Math.Abs(X - other.X) < MathConstants.Epsilon
+        && Math.Abs(Y - other.Y) < MathConstants.Epsilon
+        && Math.Abs(Z - other.Z) < MathConstants.Epsilon;
 
     public static bool operator ==(Point a, Point b) => a.Equals(b);
 
@@ -51,10 +44,7 @@ public readonly struct Point : IEquatable<Point>
     /// <param name="p">The original point.</param>
     /// <param name="v">The vector used to translate the point.</param>
     /// <returns>A new <see cref="Point"/> after applying the vector offset.</returns>
-    public static Point operator +(Point p, Vector v)
-    {
-        return new(p.X + v.X, p.Y + v.Y, p.Z + v.Z);
-    }
+    public static Point operator +(Point p, Vector v) => new(p.X + v.X, p.Y + v.Y, p.Z + v.Z);
 
     /// <summary>
     /// Subtracts one point from another, resulting in a vector that points from <paramref name="p2"/> to <paramref name="p1"/>.
@@ -62,10 +52,8 @@ public readonly struct Point : IEquatable<Point>
     /// <param name="p1">The point to subtract from.</param>
     /// <param name="p2">The point to subtract.</param>
     /// <returns>A <see cref="Vector"/> representing the displacement from <paramref name="p2"/> to <paramref name="p1"/>.</returns>
-    public static Vector operator -(Point p1, Point p2)
-    {
-        return new Vector(p1.X - p2.X, p1.Y - p2.Y, p1.Z - p2.Z);
-    }
+    public static Vector operator -(Point p1, Point p2) =>
+        new(p1.X - p2.X, p1.Y - p2.Y, p1.Z - p2.Z);
 
     /// <summary>
     /// Subtracts a vector from a point, translating the point in the opposite direction of the vector.
@@ -73,10 +61,7 @@ public readonly struct Point : IEquatable<Point>
     /// <param name="p">The original point.</param>
     /// <param name="v">The vector to subtract.</param>
     /// <returns>A new <see cref="Point"/> after moving in the reverse direction of the vector.</returns>
-    public static Point operator -(Point p, Vector v)
-    {
-        return new Point(p.X - v.X, p.Y - v.Y, p.Z - v.Z);
-    }
+    public static Point operator -(Point p, Vector v) => new(p.X - v.X, p.Y - v.Y, p.Z - v.Z);
 
     /// <summary>
     /// Mutiplies the Point by some scale
@@ -84,10 +69,8 @@ public readonly struct Point : IEquatable<Point>
     /// <param name="p"></param>
     /// <param name="scale"></param>
     /// <returns>A scalar point</returns>
-    public static Point operator *(Point p, double scale)
-    {
-        return new Point(p.X * scale, p.Y * scale, p.Z * scale);
-    }
+    public static Point operator *(Point p, double scale) =>
+        new(p.X * scale, p.Y * scale, p.Z * scale);
 
     /// <summary>
     /// Multiplication operator provided for symmetry
@@ -102,9 +85,7 @@ public readonly struct Point : IEquatable<Point>
     /// </summary>
     /// <param name="p"></param>
     /// <param name="scale"></param>
-    /// <returns>A scalar point</returns>
-    public static Point operator /(Point p, double scale)
-    {
-        return new Point(p.X / scale, p.Y / scale, p.Z / scale);
-    }
+    /// /// <returns>A scalar point</returns>
+    public static Point operator /(Point p, double scale) =>
+        new(p.X / scale, p.Y / scale, p.Z / scale);
 }

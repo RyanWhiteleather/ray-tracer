@@ -176,4 +176,15 @@ public class VectorTests
         Assert.Equal(expected, result);
         Assert.Equal(1.0, result.Magnitude());
     }
+
+    public static IEnumerable<object[]> DotProductTestData =>
+        new List<object[]> { new object[] { new Vector(1, 2, 3), new Vector(2, 3, 4), 20 } };
+
+    [Theory]
+    [MemberData(nameof(DotProductTestData))]
+    public void DotProduct_ReturnsExpectedResult(Vector vector1, Vector vector2, double expected)
+    {
+        var result = vector1.Dot(vector2);
+        Assert.Equal(expected, result);
+    }
 }
