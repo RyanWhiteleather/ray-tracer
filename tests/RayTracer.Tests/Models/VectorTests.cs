@@ -187,4 +187,19 @@ public class VectorTests
         var result = vector1.Dot(vector2);
         Assert.Equal(expected, result);
     }
+
+    public static IEnumerable<object[]> CrossProductTestData =>
+        new List<object[]>
+        {
+            new object[] { new Vector(1, 2, 3), new Vector(2, 3, 4), new Vector(-1, 2, -1) },
+            new object[] { new Vector(2, 3, 4), new Vector(1, 2, 3), new Vector(1, -2, 1) },
+        };
+
+    [Theory]
+    [MemberData(nameof(CrossProductTestData))]
+    public void CrossProduct_ReturnsExpectedResult(Vector vector1, Vector vector2, Vector expected)
+    {
+        var result = vector1.Cross(vector2);
+        Assert.Equal(expected, result);
+    }
 }

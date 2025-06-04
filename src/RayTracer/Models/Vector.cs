@@ -58,10 +58,27 @@ public readonly struct Vector : IEquatable<Vector>
     /// <summary>
     /// Computes the dot product of two vectors.
     /// This is used when intersecting rays with objects and computing the shading on a surface.
+    ///
+    /// The smaller the dot product, the larger the angle between the vectors.
+    ///
+    /// 1 = Vectors are identical
+    /// -1 = Vectors are opposite.
+    ///
+    /// If the vectors are unit vectores, the dot product is the cosine of the angle between them.
     /// </summary>
     /// <param name="v2"></param>
     /// <returns>The scalar value</returns>
     public double Dot(Vector v2) => (X * v2.X) + (Y * v2.Y) + (Z * v2.Z) + (W * v2.W);
+
+    /// <summary>
+    /// Gets the cross product of two vectors.
+    /// The new vector is a vecotr that is perpendicular to both of the original vectors.
+    /// </summary>
+    /// <remarks> </remarks>
+    /// <param name="v2"></param>
+    /// <returns></returns>
+    public Vector Cross(Vector v2) =>
+        new(Y * v2.Z - Z * v2.Y, Z * v2.X - X * v2.Z, X * v2.Y - Y * v2.X);
 
     #region Operator Overloads
 
