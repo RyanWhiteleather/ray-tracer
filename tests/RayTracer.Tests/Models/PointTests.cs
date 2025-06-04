@@ -136,4 +136,17 @@ public class PointTests
 
         Assert.Equal(expected, result);
     }
+
+    [Theory]
+    [InlineData(1, 2, 3, "(1.00, 2.00, 3.00)")]
+    [InlineData(0, 0, 0, "(0.00, 0.00, 0.00)")]
+    [InlineData(-1.234, 5.678, -9.1011, "(-1.23, 5.68, -9.10)")]
+    [InlineData(0.0049, 0.005, 0.006, "(0.00, 0.01, 0.01)")] // Tests rounding
+    public void ToString_ReturnsExpectedFormat(double x, double y, double z, string expected)
+    {
+        var point = new Point(x, y, z);
+        var result = point.ToString();
+
+        Assert.Equal(expected, result);
+    }
 }

@@ -34,6 +34,11 @@ public readonly struct Point : IEquatable<Point>
         && Math.Abs(Y - other.Y) < MathConstants.Epsilon
         && Math.Abs(Z - other.Z) < MathConstants.Epsilon;
 
+    public override string ToString()
+    {
+        return $"({X:0.00}, {Y:0.00}, {Z:0.00})";
+    }
+
     #region Operator Overloads
 
     public static bool operator ==(Point a, Point b) => a.Equals(b);
