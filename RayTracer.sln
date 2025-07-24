@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1A111F85-5463-4314-B3F4-D5103C5FEF16}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0CC7635B-AB65-4676-82F5-1462247EB236}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracer", "src\RayTracer\RayTracer.csproj", "{DDDFACC7-6D6F-40F9-9DC9-E1BAA343B7EF}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RayTracer", "src\RayTracer\RayTracer.fsproj", "{D8EB78A9-D6E0-4CE5-BA85-B1514ABABB64}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{EAC704C0-6C83-4CEC-80EA-D535A8AC3049}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{FF76A52F-995F-4356-A130-03C8927E4FCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RayTracer.Tests", "tests\RayTracer.Tests\RayTracer.Tests.csproj", "{DBB106F3-40CE-48ED-87F0-F29D5B85FCC1}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "RayTracer.Tests", "tests\RayTracer.Tests\RayTracer.Tests.fsproj", "{BEB3C3DA-73E9-450E-BF16-6D5B6F62E785}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,17 +20,17 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DDDFACC7-6D6F-40F9-9DC9-E1BAA343B7EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DDDFACC7-6D6F-40F9-9DC9-E1BAA343B7EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DDDFACC7-6D6F-40F9-9DC9-E1BAA343B7EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DDDFACC7-6D6F-40F9-9DC9-E1BAA343B7EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DBB106F3-40CE-48ED-87F0-F29D5B85FCC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBB106F3-40CE-48ED-87F0-F29D5B85FCC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBB106F3-40CE-48ED-87F0-F29D5B85FCC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBB106F3-40CE-48ED-87F0-F29D5B85FCC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEB3C3DA-73E9-450E-BF16-6D5B6F62E785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEB3C3DA-73E9-450E-BF16-6D5B6F62E785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEB3C3DA-73E9-450E-BF16-6D5B6F62E785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEB3C3DA-73E9-450E-BF16-6D5B6F62E785}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8EB78A9-D6E0-4CE5-BA85-B1514ABABB64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8EB78A9-D6E0-4CE5-BA85-B1514ABABB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8EB78A9-D6E0-4CE5-BA85-B1514ABABB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8EB78A9-D6E0-4CE5-BA85-B1514ABABB64}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{DDDFACC7-6D6F-40F9-9DC9-E1BAA343B7EF} = {1A111F85-5463-4314-B3F4-D5103C5FEF16}
-		{DBB106F3-40CE-48ED-87F0-F29D5B85FCC1} = {EAC704C0-6C83-4CEC-80EA-D535A8AC3049}
+		{BEB3C3DA-73E9-450E-BF16-6D5B6F62E785} = {FF76A52F-995F-4356-A130-03C8927E4FCE}
+		{D8EB78A9-D6E0-4CE5-BA85-B1514ABABB64} = {0CC7635B-AB65-4676-82F5-1462247EB236}
 	EndGlobalSection
 EndGlobal
