@@ -53,7 +53,11 @@ public readonly struct Vector : IEquatable<Vector>
     /// Unit vectors are vectors with a <see cref="Magnitude"/> of 1.
     /// </remarks>
     /// <returns></returns>
-    public Vector Normalize() => new(X / Magnitude(), Y / Magnitude(), Z / Magnitude());
+    public Vector Normalize()
+    {
+        var magnitude = Magnitude();
+        return new(X / magnitude, Y / magnitude, Z / magnitude);
+    }
 
     /// <summary>
     /// Computes the dot product of two vectors.
