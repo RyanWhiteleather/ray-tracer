@@ -76,6 +76,30 @@ public class ColorTests
     }
 
     [Fact]
+    public void AddOperator_ReturnsNewColor_WhenAddingTwoColors()
+    {
+        var color1 = new Color(3, -2, 5);
+        var color2 = new Color(-2, 3, 1);
+
+        var result = color1 + color2;
+        var expected = new Color(1, 1, 6);
+
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
+    public void SubtractOperator_ReturnsNewColor_WhenSubtractingTwoColor()
+    {
+        var color1 = new Color(3, 2, 1);
+        var point2 = new Color(5, 6, 7);
+
+        var result = color1 - point2;
+        var expected = new Color(-2, -4, -6);
+
+        Assert.Equal(expected, result);
+    }
+
+    [Fact]
     public void MultiplicationOperator_WorksForColorTimesScalarAndScalarTimesColor()
     {
         var color1 = new Color(1, -2, 3);
@@ -88,6 +112,18 @@ public class ColorTests
 
         var otherResult = scale * color1;
         Assert.Equal(expected, otherResult);
+    }
+
+    [Fact]
+    public void MultiplicationOperator_WorksForColorTimesColor()
+    {
+        var color1 = new Color(1, 0.2, 0.4);
+        var color2 = new Color(0.9, 1, 0.1);
+
+        var result = color1 * color2;
+        var expected = new Color(0.9, 0.2, 0.04);
+
+        Assert.Equal(expected, result);
     }
 
     [Fact]
