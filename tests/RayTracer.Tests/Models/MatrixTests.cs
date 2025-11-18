@@ -60,4 +60,58 @@ public class MatrixTests
         Assert.Equal(-2, matrix[1, 1]);
         Assert.Equal(1, matrix[2, 2]);
     }
+
+    [Fact]
+    public void Equals_ReturnsTrue_WhenMatrixsAreEqual()
+    {
+        var a = new Matrix(
+            new double[,]
+            {
+                { 1, 2, 3, 4 },
+                { 5, 6, 7, 8 },
+                { 9, 10, 11, 12 },
+                { 13, 14, 15, 16 },
+            }
+        );
+
+        var b = new Matrix(
+            new double[,]
+            {
+                { 1, 2, 3, 4 },
+                { 5, 6, 7, 8 },
+                { 9, 10, 11, 12 },
+                { 13, 14, 15, 16 },
+            }
+        );
+
+        Assert.True(a == b);
+        Assert.False(a != b);
+    }
+
+    [Fact]
+    public void Equals_ReturnsFalse_WhenMatrixsAreNotEqual()
+    {
+        var a = new Matrix(
+            new double[,]
+            {
+                { 1, 2, 3, 4 },
+                { 5, 6, 7, 8 },
+                { 9, 10, 11, 12 },
+                { 13, 14, 15, 16 },
+            }
+        );
+
+        var b = new Matrix(
+            new double[,]
+            {
+                { 0, 0, 0, 0 },
+                { 5, 6, 7, 8 },
+                { 9, 10, 11, 12 },
+                { 13, 14, 15, 16 },
+            }
+        );
+
+        Assert.True(a != b);
+        Assert.False(a == b);
+    }
 }

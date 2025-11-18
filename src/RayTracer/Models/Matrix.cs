@@ -2,7 +2,7 @@ using System;
 
 namespace RayTracer.Models;
 
-public readonly struct Matrix
+public readonly struct Matrix : IEquatable<Matrix>
 {
     public int Columns { get; }
     public int Rows { get; }
@@ -90,4 +90,17 @@ public readonly struct Matrix
 
         Elements[row * Columns + column] = value;
     }
+
+    public override bool Equals(object? obj) => obj is Matrix other && Equals(other);
+
+    public bool Equals(Matrix other)
+    {
+        return Elements.SequenceEqual(other.Elements);
+    }
+
+    #region Operator Overloads
+    public static bool operator ==(Matrix a, Matrix b) => a.Equals(b);
+
+    public static bool operator !=(Matrix a, Matrix b) => !a.Equals(b);
+    #endregion
 }
