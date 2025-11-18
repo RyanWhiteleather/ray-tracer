@@ -17,6 +17,12 @@ public class Canvas
     /// <value></value>
     public Color[] Pixels { get; }
 
+    public Color this[int x, int y]
+    {
+        get => PixelAt(x, y);
+        set => WritePixel(x, y, value);
+    }
+
     public Canvas(int width, int height)
     {
         Width = width;

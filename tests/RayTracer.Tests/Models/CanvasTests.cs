@@ -19,35 +19,35 @@ public class CanvasTests
     }
 
     [Fact]
-    public void WritePixel_SetsPixel_AtCorrectCoridinates()
+    public void WritePixel_SetsPixel_AtCorrectCoordinates()
     {
-        var width = 10;
-        var height = 20;
-        var canvas = new Canvas(width, height);
+        var canvas = new Canvas(10, 20);
         var red = new Color(1, 0, 0);
-        canvas.WritePixel(2, 3, red);
 
-        Assert.Equal(red, canvas.PixelAt(2, 3));
+        canvas[2, 3] = red;
+
+        Assert.Equal(red, canvas[2, 3]);
     }
 
     [Fact]
-    public void WritePixel_DoeNotSetPixel_OutsideOfCanvasBoundrary()
+    public void WritePixel_Throws_Exception_WhenOutsideCanvasBoundary()
     {
-        var width = 10;
-        var height = 20;
-        var canvas = new Canvas(width, height);
+        var canvas = new Canvas(10, 20);
         var red = new Color(1, 0, 0);
-        canvas.WritePixel(11, 21, red);
 
-        Assert.Throws<ArgumentOutOfRangeException>(() => canvas.PixelAt(11, 21));
+        canvas[11, 21] = red;
+
+        // indexer getter should throw
+        Assert.Throws<ArgumentOutOfRangeException>(() =>
+        {
+            var _ = canvas[11, 21];
+        });
     }
 
     [Fact]
-    public void ToPPM_BuildsCorectPPMHeader()
+    public void ToPPM_BuildsCorrectPPMHeader()
     {
-        var width = 5;
-        var height = 3;
-        var canvas = new Canvas(width, height);
+        var canvas = new Canvas(5, 3);
 
         var result = canvas.ToPPM();
         var lines = result.Split('\n', StringSplitOptions.RemoveEmptyEntries);
@@ -58,18 +58,18 @@ public class CanvasTests
     }
 
     [Fact]
-    public void ToPPM_BuildsCorectPixelString()
+    public void ToPPM_BuildsCorrectPixelString()
     {
-        var width = 5;
-        var height = 3;
-        var canvas = new Canvas(width, height);
+        var canvas = new Canvas(5, 3);
+
         var color1 = new Color(1.5, 0, 0);
         var color2 = new Color(0, 0.5, 0);
         var color3 = new Color(-0.5, 0, 1);
 
-        canvas.WritePixel(0, 0, color1);
-        canvas.WritePixel(2, 1, color2);
-        canvas.WritePixel(4, 2, color3);
+        canvas[0, 0] = color1;
+        canvas[2, 1] = color2;
+        canvas[4, 2] = color3;
+
         var result = canvas.ToPPM();
         var lines = result.Split('\n', StringSplitOptions.RemoveEmptyEntries);
 
@@ -79,22 +79,21 @@ public class CanvasTests
     }
 
     [Fact]
-    public void ToPPM_BuildsCorectPixelString_WithMaxCharacter()
+    public void ToPPM_BuildsCorrectPixelString_WithMaxCharacterLimit()
     {
-        var width = 10;
-        var height = 2;
-        var canvas = new Canvas(width, height);
-        var color1 = new Color(1, 0.8, 0.6);
+        var canvas = new Canvas(10, 2);
+        var color = new Color(1, 0.8, 0.6);
 
         for (int y = 0; y < canvas.Height; y++)
         {
             for (int x = 0; x < canvas.Width; x++)
             {
-                canvas.WritePixel(x, y, color1);
+                canvas[x, y] = color;
             }
         }
-        var result = canvas.ToPPM();
-        var lines = result.Split('\n', StringSplitOptions.RemoveEmptyEntries);
+
+        var ppm = canvas.ToPPM();
+        var lines = ppm.Split('\n', StringSplitOptions.RemoveEmptyEntries);
 
         Assert.Equal(
             "255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204",
@@ -109,12 +108,11 @@ public class CanvasTests
     }
 
     [Fact]
-    public void ToPPM_BuildsCorectPixelString_EndsWithNewLineCharacter()
+    public void ToPPM_EndsWithNewline()
     {
-        var width = 10;
-        var height = 2;
-        var canvas = new Canvas(width, height);
+        var canvas = new Canvas(10, 2);
         var ppm = canvas.ToPPM();
+
         Assert.EndsWith("\n", ppm);
     }
 }
