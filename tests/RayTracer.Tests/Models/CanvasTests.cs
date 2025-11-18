@@ -31,6 +31,18 @@ public class CanvasTests
     }
 
     [Fact]
+    public void WritePixel_DoeNotSetPixel_OutsideOfCanvasBoundrary()
+    {
+        var width = 10;
+        var height = 20;
+        var canvas = new Canvas(width, height);
+        var red = new Color(1, 0, 0);
+        canvas.WritePixel(11, 21, red);
+
+        Assert.Throws<ArgumentOutOfRangeException>(() => canvas.PixelAt(11, 21));
+    }
+
+    [Fact]
     public void ToPPM_BuildsCorectPPMHeader()
     {
         var width = 5;

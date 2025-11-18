@@ -25,17 +25,52 @@ public class Canvas
     }
 
     /// <summary>
-    /// Writes a color to the canvas at the give coridinates
+    /// Writes the specified <see cref="Color"/> to the pixel at the given
+    /// coordinates on the canvas.
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <param name="color"></param>
     public void WritePixel(int x, int y, Color color)
     {
+        if (x < 0 || x >= Width)
+        {
+            return;
+        }
+
+        if (y < 0 || y >= Height)
+        {
+            return;
+        }
+
         Pixels[y * Width + x] = color;
     }
 
-    public Color PixelAt(int x, int y) => Pixels[y * Width + x];
+    /// <summary>
+    /// Gets the pixel color at the specified coordinates.
+    /// Throws <see cref="ArgumentOutOfRangeException"/> if either
+    /// <paramref name="x"/> or <paramref name="y"/> is outside the canvas bounds.
+    /// </summary>
+    /// <param name="x"></param>
+    /// <param name="y"></param>
+    /// <returns>The <see cref="Color"/> at the given coordinates.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">
+    /// Thrown when <paramref name="x"/> or <paramref name="y"/> is outside the valid range.
+    /// </exception>
+    public Color PixelAt(int x, int y)
+    {
+        if (x < 0 || x >= Width)
+        {
+            throw new ArgumentOutOfRangeException(nameof(x));
+        }
+
+        if (y < 0 || y >= Height)
+        {
+            throw new ArgumentOutOfRangeException(nameof(y));
+        }
+
+        return Pixels[y * Width + x];
+    }
 
     /// <summary>
     /// Returns the canvas in a PPM formatted string.
