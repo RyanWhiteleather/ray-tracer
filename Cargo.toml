@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "crates/ray-tracer-core",
+    "crates/ray-tracer-cli",
+    "crates/ray-tracer-web"
+]
+
+resolver = "3"
