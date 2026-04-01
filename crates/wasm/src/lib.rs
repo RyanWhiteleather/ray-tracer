@@ -32,11 +32,11 @@ pub fn render_projectile() -> RenderResult {
     to_render_result(canvas)
 }
 
-// #[wasm_bindgen]
-// pub fn render_clock() -> RenderResult {
-//     let canvas = demo_scenes::render_clock();
-//     to_render_result(canvas)
-// }
+#[wasm_bindgen]
+pub fn render_clock() -> RenderResult {
+    let canvas = scenes::render_clock();
+    to_render_result(canvas)
+}
 
 // #[wasm_bindgen]
 // pub fn render_sphere() -> RenderResult {
@@ -59,7 +59,7 @@ fn to_rgba(canvas: &Canvas) -> Vec<u8> {
 
     for y in 0..canvas.height {
         for x in 0..canvas.width {
-            let color = canvas[(x,y)];
+            let color = canvas[(x, y)];
             data.push(to_byte(color.r));
             data.push(to_byte(color.g));
             data.push(to_byte(color.b));

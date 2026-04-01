@@ -1,6 +1,8 @@
+pub mod matrix;
 pub mod point;
 pub mod vector;
 
+pub use matrix::Matrix;
 pub use point::Point;
 pub use vector::Vector;
 
