@@ -1,3 +1,4 @@
+pub mod canvas;
+pub mod color;
 pub mod math;
-
-pub mod projectile;
+pub mod scenes;

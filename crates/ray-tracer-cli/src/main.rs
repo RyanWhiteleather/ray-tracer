@@ -1,30 +1,71 @@
-use ray_tracer_core::{
-    math::{Point, Vector},
-    projectile::{Environment, Projectile, tick},
-};
+use std::fs;
+use std::io;
+use std::path::PathBuf;
+use std::process::Command;
 
-fn main() {
-    let environment = Environment {
-        gravity: Vector::new(0.0, -0.1, 0.0),
-        wind: Vector::new(-0.01, 0.0, 0.0),
-    };
+use ray_tracer_core::canvas::Canvas;
+use ray_tracer_core::scenes;
 
-    let mut projectile = Projectile {
-        position: Point::new(0.0, 1.0, 0.0),
-        velocity: Vector::new(1.0, 1.8, 0.0).normalize() * 11.25,
-    };
+fn main() -> std::io::Result<()> {
 
-    let mut tick_count = 0;
+        let canvas = prompt_screne();
 
-    while projectile.position.y > 0.0 {
-        println!(
-            "tick {:>3}: position=({:.2}, {:.2}, {:.2})",
-            tick_count, projectile.position.x, projectile.position.y, projectile.position.z
-        );
+        println!("Enter output file name (without extension): ");
+        let mut file_name = String::new();
+        io::stdin().read_line(&mut file_name)?;
+        let file_name = file_name.trim();
 
-        projectile = tick(environment, projectile);
-        tick_count += 1;
+        let file_name = if file_name.is_empty() {
+            "render"
+        } else {
+            file_name
+        };
+
+        let output_dir = PathBuf::from("renders");
+        fs::create_dir_all(&output_dir)?;
+
+        let file_path = output_dir.join(format!("{file_name}.ppm"));
+        fs::write(&file_path, canvas.to_ppm())?;
+
+        println!("Saved to: {}", file_path.display());
+
+        if let Some(path_str) = file_path.to_str() {
+            try_open_file(path_str);
+        }
+
+    Ok(())
+}
+
+/// Prompt for all available rendered scenes.
+fn prompt_screne() -> Canvas {
+
+    loop {
+        println!("Choose a scene:");
+        println!("1 - Projectile");
+
+        let mut input = String::new();
+        io::stdin().read_line(&mut input).unwrap();
+
+        if let Ok(choice) = input.trim().parse::<u32>() {
+            if let Some(scene) = get_scene(choice) {
+                return scene;
+            }
+        }
+        println!("Invalid choice\n");
     }
+}
 
-    println!("Projectile landed after {tick_count} ticks.");
+/// Return the canvas for the selected scene.
+fn get_scene(choice: u32) -> Option<Canvas> {
+    match choice {
+        1 => Some(scenes::projectile::render_projectile()),
+        _ => None,
+    }
+}
+
+/// Try to open the generated ppm file.
+pub fn try_open_file(path: &str) {
+    if let Err(e) = Command::new("xdg-open").arg(path).spawn() {
+        eprintln!("Could not open file automatically: {}", e);
+    }
 }
