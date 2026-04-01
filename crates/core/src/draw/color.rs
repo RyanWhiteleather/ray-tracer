@@ -80,7 +80,7 @@ impl fmt::Display for Color {
 mod tests {
     use rstest::rstest;
 
-    use crate::color::Color;
+    use crate::draw::Color;
 
     #[test]
     fn equals_returns_true_when_colors_are_equal() {

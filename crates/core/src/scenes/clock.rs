@@ -1,8 +1,8 @@
 use std::f64::consts::PI;
 
 use crate::{
-    canvas::Canvas,
-    color::Color,
+    draw::Canvas,
+    draw::Color,
     math::{Matrix, Point},
 };
 

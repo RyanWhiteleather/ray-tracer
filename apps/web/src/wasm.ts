@@ -1,4 +1,4 @@
-import init, { render_clock, render_projectile } from "ray-tracer-wasm";
+import init, { render_circle, render_clock, render_projectile } from "ray-tracer-wasm";
 
 let initialized = false;
 
@@ -30,6 +30,6 @@ export function renderClock() {
     return mapResult(render_clock());
 }
 
-// export function renderSphere() {
-//     return mapResult(render_sphere());
-// }
+export function renderCircle() {
+    return mapResult(render_circle());
+}

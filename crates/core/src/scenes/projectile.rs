@@ -1,6 +1,6 @@
 use crate::{
-    canvas::Canvas,
-    color::Color,
+    draw::Canvas,
+    draw::Color,
     math::{Point, Vector},
 };
 

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { drawCanvas } from "./canvas";
-import { initWasm, renderClock, renderProjectile } from "./wasm";
+import { initWasm, renderClock, renderProjectile, renderCircle } from "./wasm";
 
 export default function App() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -30,10 +30,10 @@ export default function App() {
                 <button disabled={!ready} onClick={() => renderScene(renderClock)}>
                     Render Clock
                 </button>
-                {/*
-                <button disabled={!ready} onClick={() => renderScene(renderSphere)}>
-                    Render Sphere
-                </button> */}
+
+                <button disabled={!ready} onClick={() => renderScene(renderCircle)}>
+                    Render Circle
+                </button>
             </div>
 
             <div style={{ marginTop: "12px" }}>

@@ -3,7 +3,7 @@ use std::io;
 use std::path::PathBuf;
 use std::process::Command;
 
-use ray_tracer_core::canvas::Canvas;
+use ray_tracer_core::draw::Canvas;
 use ray_tracer_core::scenes;
 
 fn main() -> std::io::Result<()> {
@@ -41,6 +41,7 @@ fn prompt_screne() -> Canvas {
         println!("Choose a scene:");
         println!("1 - Projectile");
         println!("2 - Clock");
+        println!("3 - Circle");
 
         let mut input = String::new();
         io::stdin().read_line(&mut input).unwrap();
@@ -59,6 +60,7 @@ fn get_scene(choice: u32) -> Option<Canvas> {
     match choice {
         1 => Some(scenes::render_projectile()),
         2 => Some(scenes::render_clock()),
+        3 => Some(scenes::render_circle()),
         _ => None,
     }
 }

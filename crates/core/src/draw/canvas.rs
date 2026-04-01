@@ -1,6 +1,6 @@
 use std::ops::{Index, IndexMut};
 
-use crate::color::Color;
+use crate::draw::Color;
 
 #[derive(Debug, Clone)]
 pub struct Canvas {
@@ -113,8 +113,8 @@ fn scale_to_255(value: f64) -> i32 {
 
 #[cfg(test)]
 mod tests {
-    use crate::canvas::Canvas;
-    use crate::color::Color;
+    use crate::draw::Canvas;
+    use crate::draw::Color;
 
     #[test]
     fn new_canvas_returns_canvas_with_correct_size_and_empty_colors() {

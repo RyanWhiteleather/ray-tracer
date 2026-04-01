@@ -1,4 +1,4 @@
-use ray_tracer_core::{canvas::Canvas, scenes};
+use ray_tracer_core::{draw::Canvas, scenes};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen]
@@ -38,11 +38,11 @@ pub fn render_clock() -> RenderResult {
     to_render_result(canvas)
 }
 
-// #[wasm_bindgen]
-// pub fn render_sphere() -> RenderResult {
-//     let canvas = demo_scenes::render_sphere();
-//     to_render_result(canvas)
-// }
+#[wasm_bindgen]
+pub fn render_circle() -> RenderResult {
+    let canvas = scenes::render_circle();
+    to_render_result(canvas)
+}
 
 fn to_render_result(canvas: Canvas) -> RenderResult {
     let pixels = to_rgba(&canvas);
