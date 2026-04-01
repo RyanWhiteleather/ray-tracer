@@ -37,15 +37,15 @@ jobs:
       - name: Install wasm-pack
         run: cargo install wasm-pack
 
-      - name: Install web dependencies
-        working-directory: apps/web
-        run: npm ci
+      - name: Build WASM package
+        run: wasm-pack build crates/wasm --target web
 
       - name: Run Rust tests
         run: cargo test --workspace --all-targets
 
-      - name: Build WASM package
-        run: wasm-pack build crates/wasm --target web
+      - name: Install web dependencies
+        working-directory: apps/web
+        run: npm ci
 
       - name: Build web app
         working-directory: apps/web
