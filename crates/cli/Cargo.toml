@@ -4,4 +4,4 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-ray-tracer-core = { path = "../ray-tracer-core" }
+ray-tracer-core = { path = "../core" }
